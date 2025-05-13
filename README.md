@@ -16,9 +16,13 @@ I created this repo to:
 ## 🚀 What's Inside
 
 | Project Name | Description | Tech Used |
+
 | [Calculator](./calculator)   | Simple CLI calculator with basic operations | Python |
+
 | [Snake Game](./snake-game)   | Terminal-based snake game using curses      | Python |
+
 | [Weather App](./weather-app) | Real-time weather tracker using OpenWeatherMap API | Python |
+
 ---
 
 ## 🛠️ Technologies Explored
