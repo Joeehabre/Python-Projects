@@ -1,0 +1,11 @@
+# ⏱️ Timer & Stopwatch (Python)
+
+A lightweight terminal utility for timing events. Includes a simple stopwatch and countdown timer.
+
+## ⌛ Features
+- Stopwatch: Measures elapsed time
+- Timer: Countdown in seconds
+
+## 🚀 Run
+```bash
+python timer.py
