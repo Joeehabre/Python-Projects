@@ -1,12 +1,19 @@
-# ✅ Terminal To-Do List App
+# ✅ Advanced Terminal To-Do List App (Python)
 
-A simple terminal-based to-do list that saves your tasks to a file so they persist between runs.
+A sleek and persistent command-line To-Do List app where you can add, remove, complete, and view your tasks.
 
-## 🚀 Features
-- Add, remove, view, and clear tasks
-- Saves tasks in `tasks.txt`
-- Easy-to-use menu system
+---
 
-## 💻 Run
+## ✨ Features
+- Add and delete tasks
+- Mark tasks as ✅ done
+- View tasks with clear status (⬜ pending / ✅ complete)
+- Clear all tasks
+- Saves to a file (`tasks.txt`) for persistence
+
+---
+
+## 🚀 How to Run
+
 ```bash
 python todo.py
