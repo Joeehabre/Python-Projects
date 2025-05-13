@@ -1,0 +1,12 @@
+# ✅ Terminal To-Do List App
+
+A simple terminal-based to-do list that saves your tasks to a file so they persist between runs.
+
+## 🚀 Features
+- Add, remove, view, and clear tasks
+- Saves tasks in `tasks.txt`
+- Easy-to-use menu system
+
+## 💻 Run
+```bash
+python todo.py
