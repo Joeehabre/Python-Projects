@@ -1,0 +1,14 @@
+# 🔐 Password Generator (Python)
+
+A terminal app that generates secure passwords with customizable length and characters.
+
+## 🧠 Features
+- Random passwords using:
+  - Letters (upper/lower)
+  - Numbers
+  - Symbols
+- User-specified length
+
+## 🚀 Run
+```bash
+python generator.py
