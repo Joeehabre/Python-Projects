@@ -1,6 +1,6 @@
-# 🗂️ Py-Projects
+# 🗂️ Python-Projects
 
-Welcome to my curated collection of Python mini-projects.  
+Welcome to my curated collection of Python projects.  
 This repository is a central hub for practical, fun, and educational projects I've created while learning and building real-world coding skills.
 
 ---
