@@ -1,32 +1,72 @@
 # Created by Joe Habre
----
 
-## 📏 **4. Unit Converter**
+def convert_length(value, from_unit, to_unit):
+    factors = {
+        "cm": 1,
+        "m": 100,
+        "inch": 2.54,
+        "ft": 30.48
+    }
+    return value * factors[from_unit] / factors[to_unit]
 
-### 📁 Folder: `unit-converter/converter.py`
+def convert_weight(value, from_unit, to_unit):
+    factors = {
+        "kg": 1,
+        "g": 0.001,
+        "lb": 0.453592,
+        "oz": 0.0283495
+    }
+    return value * factors[from_unit] / factors[to_unit]
 
-```python
-def convert_units():
-    conversions = {
-        "cm": ("inch", 0.3937),
-        "inch": ("cm", 2.54),
-        "kg": ("lb", 2.2046),
-        "lb": ("kg", 0.4536)
+def convert_temperature(value, from_unit, to_unit):
+    if from_unit == to_unit:
+        return value
+    if from_unit == "c" and to_unit == "f":
+        return (value * 9/5) + 32
+    if from_unit == "f" and to_unit == "c":
+        return (value - 32) * 5/9
+    if from_unit == "c" and to_unit == "k":
+        return value + 273.15
+    if from_unit == "k" and to_unit == "c":
+        return value - 273.15
+    if from_unit == "f" and to_unit == "k":
+        return (value + 459.67) * 5/9
+    if from_unit == "k" and to_unit == "f":
+        return (value * 9/5) - 459.67
+
+def main():
+    print("📏 Unit Converter")
+    categories = {
+        "1": ("Length", convert_length, ["cm", "m", "inch", "ft"]),
+        "2": ("Weight", convert_weight, ["kg", "g", "lb", "oz"]),
+        "3": ("Temperature", convert_temperature, ["c", "f", "k"])
     }
 
-    print("📏 Unit Converter")
-    for key, (unit, _) in conversions.items():
-        print(f"{key} → {unit}")
+    for key, (name, _, _) in categories.items():
+        print(f"{key}. {name}")
 
-    from_unit = input("From unit (cm/inch/kg/lb): ").lower()
-    value = float(input(f"Enter value in {from_unit}: "))
-    
-    if from_unit in conversions:
-        to_unit, factor = conversions[from_unit]
-        result = value * factor
-        print(f"{value} {from_unit} = {round(result, 4)} {to_unit}")
-    else:
-        print("❌ Unsupported unit.")
+    category_choice = input("Choose a category (1-3): ").strip()
+
+    if category_choice not in categories:
+        print("❌ Invalid category.")
+        return
+
+    category_name, convert_func, units = categories[category_choice]
+    print(f"\n🔄 {category_name} units:", ", ".join(units))
+
+    from_unit = input("Convert from: ").strip().lower()
+    to_unit = input("Convert to: ").strip().lower()
+
+    if from_unit not in units or to_unit not in units:
+        print("❌ Invalid units.")
+        return
+
+    try:
+        value = float(input(f"Enter value in {from_unit}: "))
+        result = convert_func(value, from_unit, to_unit)
+        print(f"✅ {value} {from_unit} = {round(result, 4)} {to_unit}")
+    except Exception as e:
+        print(f"❌ Error: {e}")
 
 if __name__ == "__main__":
-    convert_units()
+    main()
