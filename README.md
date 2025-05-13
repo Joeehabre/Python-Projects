@@ -17,8 +17,6 @@ I created this repo to:
 
 | Project                      | Description                                                           | Features                   |
 
-|------------------------------|-----------------------------------------------------------------------|----------------------------|
-
 | [Calculator](./calculator)            | Terminal calculator with memory, history & advanced math           | Python, CLI, Math Ops      |
 
 | [Snake Game](./snake-game)            | Arcade-style snake game using Pygame with scoring & restart        | Python, Pygame, Game Dev   |
