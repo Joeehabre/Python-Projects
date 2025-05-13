@@ -1,0 +1,11 @@
+# 📏 Unit Converter (Metric ↔ Imperial)
+
+Convert between common metric and imperial units in the terminal.
+
+## 📐 Supported Conversions
+- cm ↔ inch
+- kg ↔ lb
+
+## 🚀 Run
+```bash
+python converter.py
