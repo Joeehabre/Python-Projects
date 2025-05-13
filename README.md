@@ -13,15 +13,25 @@ I created this repo to:
 
 ---
 
-## 🚀 What's Inside
+## 🧩 Python Mini Projects
 
-| Project Name | Description | Tech Used |
+| Project                      | Description                                                           | Features                   |
 
-| [Calculator](./calculator)   | Simple CLI calculator with basic operations | Python |
+|------------------------------|-----------------------------------------------------------------------|----------------------------|
 
-| [Snake Game](./snake-game)   | Terminal-based snake game using curses      | Python |
+| [Calculator](./calculator)            | Terminal calculator with memory, history & advanced math           | Python, CLI, Math Ops      |
 
-| [Weather App](./weather-app) | Real-time weather tracker using OpenWeatherMap API | Python |
+| [Snake Game](./snake-game)            | Arcade-style snake game using Pygame with scoring & restart        | Python, Pygame, Game Dev   |
+
+| [Weather App](./weather-app)          | Real-time weather tracker using OpenWeatherMap API                 | API, JSON, Terminal UI     |
+
+| [To-Do List](./todo-list)             | Terminal task manager with persistence and task status             | File I/O, UX, CLI Utility  |
+
+| [Password Generator](./password-generator) | Secure password generator with strength meter & clipboard support | Security, `secrets`, UX    |
+
+| [Unit Converter](./unit-converter)    | Convert between length, weight, and temperature units              | Math, CLI, Input Handling  |
+
+| [Timer & Stopwatch](./timer-stopwatch)| Track time with pause/resume stopwatch and countdown timer         | Real-Time, UX, Terminal    |
 
 ---
 
