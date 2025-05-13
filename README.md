@@ -1,7 +1,7 @@
-# 🗂️ Personal Projects
+# 🗂️ PY Projects
 
-Welcome to my collection of personal projects!  
-This repository serves as a **central hub** for the small to medium-sized coding projects I've built while learning, exploring, and experimenting with different technologies.
+Welcome to my collection of python projects!  
+This repository serves as a **central hub** for the small to medium-sized python coding projects I've built while learning, exploring, and experimenting with different technologies.
 
 ---
 
