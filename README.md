@@ -1,65 +1,71 @@
-# 🗂️ PY Projects
+# 🗂️ Py-Projects
 
-Welcome to my collection of python projects!  
-This repository serves as a **central hub** for the small to medium-sized python coding projects I've built while learning, exploring, and experimenting with different technologies.
+Welcome to my curated collection of Python mini-projects.  
+This repository is a central hub for practical, fun, and educational projects I've created while learning and building real-world coding skills.
 
 ---
 
 ## 🎯 Purpose
-I created this repo to:
-- Organize and showcase personal coding experiments
-- Track my progress over time as I learn new skills
-- Share mini-projects that solve real problems or just for fun
+
+I built this repo to:
+- Organize and showcase personal Python experiments and tools
+- Track my progress as I grow as a developer
+- Build useful, interactive terminal-based utilities
+- Share code others can use, learn from, or improve
 
 ---
 
 ## 🧩 Python Mini Projects
 
-| Project                      | Description                                                           | Features                   |
-
-| [Calculator](./calculator)            | Terminal calculator with memory, history & advanced math           | Python, CLI, Math Ops      |
-
-| [Snake Game](./snake-game)            | Arcade-style snake game using Pygame with scoring & restart        | Python, Pygame, Game Dev   |
-
-| [Weather App](./weather-app)          | Real-time weather tracker using OpenWeatherMap API                 | API, JSON, Terminal UI     |
-
-| [To-Do List](./todo-list)             | Terminal task manager with persistence and task status             | File I/O, UX, CLI Utility  |
-
-| [Password Generator](./password-generator) | Secure password generator with strength meter & clipboard support | Security, `secrets`, UX    |
-
-| [Unit Converter](./unit-converter)    | Convert between length, weight, and temperature units              | Math, CLI, Input Handling  |
-
-| [Timer & Stopwatch](./timer-stopwatch)| Track time with pause/resume stopwatch and countdown timer         | Real-Time, UX, Terminal    |
+| Project                              | Description                                                             | Features                    |
+|--------------------------------------|-------------------------------------------------------------------------|-----------------------------|
+| [Calculator](./calculator)           | Terminal calculator with memory, history, and advanced math             | Python, CLI, Math Ops       |
+| [Snake Game](./snake-game)           | Classic snake game with scoring and restart using `pygame`             | Python, Pygame, Game Dev    |
+| [Weather App](./weather-app)         | Real-time terminal weather app using OpenWeatherMap API                | API, Requests, JSON         |
+| [To-Do List](./todo-list)            | CLI task manager with file persistence and completion tracking         | File I/O, CLI UX            |
+| [Password Generator](./password-generator) | Secure password generator with strength meter & clipboard copy     | `secrets`, UX, Pyperclip    |
+| [Unit Converter](./unit-converter)   | Convert length, weight, and temperature between common units           | Input Handling, CLI Logic   |
+| [Timer & Stopwatch](./timer-stopwatch)| Stopwatch and countdown timer with real-time formatting               | Time Module, Real-Time UX   |
 
 ---
 
-## 🛠️ Technologies Explored
-- Programming: Java, Python, C++
-- Web: HTML, CSS, JavaScript
-- Concepts: OOP, APIs, File I/O, Data Structures
-- Tools: Git, VS Code, IntelliJ
+## 🛠️ Technologies & Concepts
+
+- **Languages**: Python
+- **Libraries**: `pygame`, `requests`, `pyperclip`, `secrets`, `time`
+- **Skills Used**:
+  - Command-line apps
+  - Input validation & user experience
+  - File handling and persistence
+  - Working with APIs and JSON
+  - Logic design and modular code structure
 
 ---
 
 ## 📈 Roadmap
-- Add documentation to each project
-- Refactor older code as my skills improve
-- Build a GUI-based project
-- Deploy some projects to the web
+
+- 📘 Add README files to every subproject ✅
+- 🎮 Build a GUI version of at least one project (e.g., calculator or to-do list)
+- 🌍 Deploy small web apps using Flask (future stretch)
+- 🧪 Write automated tests for select projects
+- 📸 Add screenshots or GIFs for each project
 
 ---
 
 ## 🪪 License
+
 This collection is shared under the [MIT License](LICENSE).  
-Feel free to explore, fork, or learn from anything here!
+Feel free to use, modify, and learn from anything here.
 
 ---
 
 ## 🙋‍♂️ About Me
+
 **Joe Habre**  
 📧 [joehabre48@gmail.com](mailto:joehabre48@gmail.com)  
 🔗 [LinkedIn](https://www.linkedin.com/in/joe-habre-228557330)  
 📸 [Instagram](https://www.instagram.com/joeehabre)
 
 ---
-_"A journey through code, curiosity, and creativity."_ ✨
+
+> _"Code is a craft. These are my tools."_ 🛠️✨
