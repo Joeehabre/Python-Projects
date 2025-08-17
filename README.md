@@ -40,15 +40,6 @@ I built this repo to:
   - Working with APIs and JSON
   - Logic design and modular code structure
 
----
-
-## 📈 Roadmap
-
-- 📘 Add README files to every subproject ✅
-- 🎮 Build a GUI version of at least one project (e.g., calculator or to-do list)
-- 🌍 Deploy small web apps using Flask (future stretch)
-- 🧪 Write automated tests for select projects
-- 📸 Add screenshots or GIFs for each project
 
 ---
 
