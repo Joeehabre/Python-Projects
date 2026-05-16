@@ -1,68 +1,159 @@
 # Created by Joe Habre
-
 import time
 import sys
+import threading
 
-def format_time(seconds):
-    return time.strftime('%H:%M:%S', time.gmtime(seconds))
+
+def fmt(seconds):
+    h = int(seconds // 3600)
+    m = int((seconds % 3600) // 60)
+    s = int(seconds % 60)
+    return f"{h:02d}:{m:02d}:{s:02d}"
+
+
+# ── Stopwatch ──────────────────────────────────────────────────────────────────
 
 def stopwatch():
-    print("\n🕐 Stopwatch Started!")
-    start = time.time()
+    print("\n🕐 Stopwatch")
+    print("  Commands: [l]ap  [p]ause  [r]esume  [s]top\n")
+
+    start = time.perf_counter()
     paused = False
-    total_paused_time = 0
-    pause_start = 0
+    paused_at = 0.0
+    total_paused = 0.0
+    laps = []
+    stop_event = threading.Event()
+
+    def display():
+        while not stop_event.is_set():
+            if not paused:
+                elapsed = time.perf_counter() - start - total_paused
+                print(f"\r  ⏱  {fmt(elapsed)}   ", end="", flush=True)
+            time.sleep(0.1)
+
+    t = threading.Thread(target=display, daemon=True)
+    t.start()
 
     while True:
-        print(f"Elapsed: {format_time(int(time.time() - start - total_paused_time))}", end='\r')
-        time.sleep(1)
+        cmd = input().strip().lower()
 
-        if m := input("Press [p]ause / [r]esume / [s]top: ").lower().strip():
-            if m == 'p' and not paused:
-                paused = True
-                pause_start = time.time()
-                print("⏸️ Paused. Press 'r' to resume.")
-            elif m == 'r' and paused:
-                paused = False
-                total_paused_time += time.time() - pause_start
-                print("▶️ Resumed.")
-            elif m == 's':
-                total = int(time.time() - start - total_paused_time)
-                print(f"\n✅ Final Time: {format_time(total)}")
-                break
+        if cmd == "p" and not paused:
+            paused = True
+            paused_at = time.perf_counter()
+            print("\n  ⏸  Paused")
 
-def timer():
+        elif cmd == "r" and paused:
+            nonlocal_paused_duration = time.perf_counter() - paused_at
+            total_paused += nonlocal_paused_duration
+            paused = False
+            print("  ▶  Resumed")
+
+        elif cmd == "l":
+            elapsed = time.perf_counter() - start - total_paused
+            lap_num = len(laps) + 1
+            laps.append(elapsed)
+            print(f"\n  🏁 Lap {lap_num}: {fmt(elapsed)}")
+
+        elif cmd == "s":
+            stop_event.set()
+            elapsed = time.perf_counter() - start - total_paused
+            print(f"\n\n  ✅ Stopped — Total: {fmt(elapsed)}")
+            if laps:
+                print("  📋 Lap times:")
+                for i, lap in enumerate(laps, 1):
+                    print(f"     Lap {i}: {fmt(lap)}")
+            break
+
+
+# ── Countdown Timer ────────────────────────────────────────────────────────────
+
+def parse_duration(raw):
+    raw = raw.strip()
+    total = 0
+    if "h" in raw or "m" in raw or "s" in raw:
+        import re
+        for value, unit in re.findall(r"(\d+)\s*([hms])", raw):
+            mult = {"h": 3600, "m": 60, "s": 1}[unit]
+            total += int(value) * mult
+        return total
+    return int(raw)
+
+
+def countdown_timer():
+    print("\n⏳ Countdown Timer")
+    print("  Enter duration as seconds (e.g. 90) or using h/m/s (e.g. 1h30m or 2m30s)")
+
     try:
-        total_seconds = int(input("Enter countdown time in seconds: "))
-    except ValueError:
-        print("❌ Invalid input.")
+        raw = input("  Duration: ")
+        total = parse_duration(raw)
+        if total <= 0:
+            raise ValueError
+    except (ValueError, TypeError):
+        print("❌ Invalid duration.")
         return
 
-    print("⏳ Timer Started")
-    while total_seconds:
-        print(f"Time Left: {format_time(total_seconds)}", end='\r')
-        time.sleep(1)
-        total_seconds -= 1
+    stop_event = threading.Event()
+    paused = threading.Event()
 
-    print("\n⏰ Time's up!")
+    print("  Commands: [p]ause  [r]esume  [c]ancel\n")
+
+    def display():
+        remaining = total
+        last_tick = time.perf_counter()
+        while remaining > 0 and not stop_event.is_set():
+            if not paused.is_set():
+                now = time.perf_counter()
+                remaining -= now - last_tick
+                last_tick = now
+                display_time = max(0, remaining)
+                print(f"\r  ⏳ {fmt(display_time)}   ", end="", flush=True)
+            else:
+                last_tick = time.perf_counter()
+            time.sleep(0.1)
+
+        if not stop_event.is_set() and remaining <= 0:
+            print("\n\n  ⏰ Time's up!")
+            stop_event.set()
+
+    t = threading.Thread(target=display, daemon=True)
+    t.start()
+
+    while not stop_event.is_set():
+        cmd = input().strip().lower()
+        if cmd == "p":
+            paused.set()
+            print("\n  ⏸  Paused")
+        elif cmd == "r":
+            paused.clear()
+            print("  ▶  Resumed")
+        elif cmd == "c":
+            stop_event.set()
+            print("\n  🛑 Timer cancelled.")
+            break
+
+    t.join(timeout=0.5)
+
+
+# ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
     while True:
-        print("\n⏱️ Timer & Stopwatch")
-        print("1. Stopwatch")
-        print("2. Countdown Timer")
-        print("3. Exit")
-        choice = input("Select an option: ").strip()
+        print("\n⏱️  Timer & Stopwatch")
+        print("  [1] Stopwatch")
+        print("  [2] Countdown Timer")
+        print("  [3] Exit")
+        choice = input("  Select: ").strip()
 
-        if choice == '1':
+        if choice == "1":
             stopwatch()
-        elif choice == '2':
-            timer()
-        elif choice == '3':
-            print("👋 Exiting. Goodbye!")
+        elif choice == "2":
+            countdown_timer()
+        elif choice == "3":
+            print("👋 Goodbye!")
             sys.exit()
         else:
             print("❌ Invalid selection.")
+
 
 if __name__ == "__main__":
     main()
