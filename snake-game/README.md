@@ -1,44 +1,35 @@
 # 🐍 Snake Game
 
-A modern, terminal-based version of the classic Snake game built using **Python** and **Pygame**.  
-It features smooth controls, progressive difficulty, live scoring, and a sleek, minimalistic interface — all powered by clean Python code.
+Classic Snake built with Pygame — with a grid, persistent high score, pause, and food that never spawns on the snake.
 
 ---
 
 ## ✨ Features
 
-- 🔁 **Replayable Loop** – Restart or quit directly from the game over screen
-- 🎯 **Progressive Difficulty** – Snake speed increases as you grow
-- 🧠 **Self-collision & Wall Detection** – Lose if you hit yourself or the edge
-- 🍎 **Random Food Spawning** – Food appears in different spots each time
-- 🧮 **Live Score Display** – Track your score in real-time
+- 🏆 **High score** saved to `highscore.json` and shown on every run
+- ⏸️ **Pause** with `P`
+- 🟩 **Distinct head color** so you can always see where you're going
+- 🔲 **Grid background** for cleaner visuals
+- 🍎 **Smart food spawning** — food is never placed on the snake's body
+- 📈 **Progressive speed** — gets faster as your score grows
+- 🔁 **Clean restart** — press `R` after game over, no crashes or stack issues
 
 ---
 
 ## 🕹️ Controls
 
-| Action       | Key         |
-|--------------|-------------|
-| Move Up      | `↑` or `W`  |
-| Move Down    | `↓` or `S`  |
-| Move Left    | `←` or `A`  |
-| Move Right   | `→` or `D`  |
-| Restart Game | `R` (after Game Over) |
-| Quit Game    | `Q` (after Game Over) |
+| Action | Key |
+|---|---|
+| Move | `↑ ↓ ← →` or `W A S D` |
+| Pause / Resume | `P` |
+| Restart | `R` (game over screen) |
+| Quit | `Q` (game over screen) |
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Run
 
-- **Python 3**
-- **[Pygame](https://www.pygame.org/)** – for rendering and game loop
-- No external assets — everything is drawn programmatically
-
----
-
-## 🚀 Setup & Run
-
-1. Make sure Python is installed.
-2. Install `pygame` if you don’t already have it:
-   ```bash
-   pip install pygame
+```bash
+pip install pygame
+python snake.py
+```

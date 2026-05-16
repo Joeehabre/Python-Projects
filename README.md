@@ -1,62 +1,97 @@
-# 🗂️ Python-Projects
+# 🗂️ Python Projects
 
-Welcome to my small collection of Python projects.  
-This repository is a central hub for practical, fun, and educational projects I've created while learning and building real-world coding skills.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Projects](https://img.shields.io/badge/Projects-7-orange)
 
----
-
-## 🎯 Purpose
-
-I built this repo to:
-- Organize and showcase personal Python experiments and tools
-- Track my progress as I grow as a developer
-- Build useful, interactive terminal-based utilities
-- Share code others can use, learn from, or improve
+A collection of practical Python CLI tools and games — built to be actually useful, not just hello-world exercises.
 
 ---
 
-## 🧩 Python Mini Projects
+## 📦 Projects
 
-| Project                              | Description                                                             | Features                    |
-|--------------------------------------|-------------------------------------------------------------------------|-----------------------------|
-| [Calculator](./calculator)           | Terminal calculator with memory, history, and advanced math             | Python, CLI, Math Ops       |
-| [Snake Game](./snake-game)           | Classic snake game with scoring and restart using `pygame`             | Python, Pygame, Game Dev    |
-| [Weather App](./weather-app)         | Real-time terminal weather app using OpenWeatherMap API                | API, Requests, JSON         |
-| [To-Do List](./todo-list)            | CLI task manager with file persistence and completion tracking         | File I/O, CLI UX            |
-| [Password Generator](./password-generator) | Secure password generator with strength meter & clipboard copy     | `secrets`, UX, Pyperclip    |
-| [Unit Converter](./unit-converter)   | Convert length, weight, and temperature between common units           | Input Handling, CLI Logic   |
-| [Timer & Stopwatch](./timer-stopwatch)| Stopwatch and countdown timer with real-time formatting               | Time Module, Real-Time UX   |
+| Project | Description | Run |
+|---|---|---|
+| [🧮 Calculator](./calculator) | Terminal calculator with `ans` chaining, memory, full expression history | `python calculator.py` |
+| [🐍 Snake Game](./snake-game) | Pygame snake with high score persistence, pause, and grid | `python snake.py` |
+| [🌦️ Weather App](./weather-app) | Live weather + 3-day forecast via OpenWeatherMap API | `python weather.py` |
+| [✅ To-Do List](./todo-list) | Task manager with priorities, due dates, search, and sort | `python todo.py` |
+| [🔐 Password Generator](./PasswordGen) | Cryptographically secure generator with entropy score and batch output | `python PassGen.py` |
+| [📏 Unit Converter](./UnitConverter) | Converts length, weight, temperature, speed, and volume | `python UnitConv.py` |
+| [⏱️ Timer & Stopwatch](./Timer-Stop) | Threaded stopwatch with laps + countdown with human duration input | `python Timer-Stopwatch.py` |
 
 ---
 
-## 🛠️ Technologies & Concepts
+## 🚀 Getting Started
 
-- **Languages**: Python
-- **Libraries**: `pygame`, `requests`, `pyperclip`, `secrets`, `time`
-- **Skills Used**:
-  - Command-line apps
-  - Input validation & user experience
-  - File handling and persistence
-  - Working with APIs and JSON
-  - Logic design and modular code structure
+**Requirements:** Python 3.8+
 
+```bash
+git clone https://github.com/Joeehabre/Python-Projects.git
+cd Python-Projects
+```
+
+Install dependencies for the projects that need them:
+
+```bash
+pip install pygame        # Snake Game
+pip install requests      # Weather App
+pip install pyperclip     # Password Generator (optional — enables clipboard copy)
+```
+
+For the Weather App, set your API key before running:
+
+```bash
+export OPENWEATHER_API_KEY="your_key_here"   # macOS / Linux
+set OPENWEATHER_API_KEY=your_key_here        # Windows
+```
+
+Get a free key at [openweathermap.org](https://openweathermap.org/api).
+
+---
+
+## 🛠️ Tech & Skills
+
+| Area | Details |
+|---|---|
+| Language | Python 3 |
+| GUI / Game | `pygame` |
+| Networking | `requests`, REST APIs, JSON |
+| Security | `secrets` module (CSPRNG) |
+| Concurrency | `threading` (Timer/Stopwatch) |
+| Storage | JSON file persistence |
+| UX | Input validation, real-time display, color-coded output |
+
+---
+
+## 📁 Structure
+
+```
+Python-Projects/
+├── calculator/          # calculator.py
+├── snake-game/          # snake.py, highscore.json
+├── weather-app/         # weather.py
+├── todo-list/           # todo.py, tasks.json
+├── PasswordGen/         # PassGen.py
+├── UnitConverter/       # UnitConv.py
+└── Timer-Stop/          # Timer-Stopwatch.py
+```
 
 ---
 
 ## 🪪 License
 
-This collection is shared under the [MIT License](LICENSE).  
-Feel free to use, modify, and learn from anything here.
+MIT — use, modify, and learn from anything here freely.
 
 ---
 
-## 🙋‍♂️ About Me
+## 🙋‍♂️ Author
 
-**Joe Habre**  
-📧 [joehabre48@gmail.com](mailto:joehabre48@gmail.com)  
-🔗 [LinkedIn](https://www.linkedin.com/in/joe-habre-228557330)  
+**Joe Habre**
+📧 [joehabre48@gmail.com](mailto:joehabre48@gmail.com)
+🔗 [LinkedIn](https://www.linkedin.com/in/joe-habre-228557330)
 📸 [Instagram](https://www.instagram.com/joeehabre)
 
 ---
 
-> _"Code is a craft. These are my tools."_ 🛠️✨
+> *"Code is a craft. These are my tools."*

@@ -1,24 +1,57 @@
-# 🌦️ Real-Time Weather App (Python)
+# 🌦️ Weather App
 
-A simple and elegant command-line weather app built in Python using the **OpenWeatherMap API**.  
-It provides real-time weather updates for any city in the world — including temperature, humidity, wind speed, and conditions.
-
----
-
-## 🧠 Why I Built This
-
-I wanted to explore how APIs work in real-world applications and create a practical tool that fetches live weather data. This project helped me better understand HTTP requests, JSON parsing, and clean user interaction in Python.
+Real-time weather and 3-day forecast in your terminal, powered by the OpenWeatherMap API.
 
 ---
 
 ## ✨ Features
 
-- 🔍 Search by city name
-- 🌡️ Get current temperature in Celsius
-- 🌬️ See wind speed and direction
-- 💧 Display humidity levels
-- 🌈 Get weather condition descriptions (e.g., clear, cloudy, rain)
-- ❌ Handles invalid city names and API errors
-- 🔁 Built-in loop for checking multiple cities
+- 🌡️ Temperature + feels-like
+- 🌬️ Wind speed and direction (N / NE / E …)
+- 💧 Humidity
+- 🌅 Sunrise & sunset times
+- 📅 3-day forecast (`f <city>`)
+- 🔄 Toggle metric / imperial units (`u`)
+- 🕘 Recent city history (`h` — last 5 searches)
+- 🌈 Condition-based weather icons
 
 ---
+
+## 🚀 Run
+
+```bash
+pip install requests
+export OPENWEATHER_API_KEY="your_key_here"   # macOS/Linux
+# set OPENWEATHER_API_KEY=your_key_here      # Windows
+
+python weather.py
+```
+
+Get a free API key at [openweathermap.org](https://openweathermap.org/api).
+
+---
+
+## 💻 Commands
+
+| Input | Action |
+|---|---|
+| `<city>` | Current weather for that city |
+| `f <city>` | 3-day forecast |
+| `u` | Toggle °C ↔ °F |
+| `h` | Show recent searches |
+| `q` | Quit |
+
+---
+
+## 💻 Demo
+
+```
+[°C] Enter city (or command): beirut
+
+☁️  Beirut, LB
+  🌡️  Temp      : 24°C  (feels like 26°C)
+  💧 Humidity  : 68%
+  🌬️  Wind      : 5.1 m/s W
+  🌈 Condition : Partly cloudy
+  🌅 Sunrise   : 05:47    🌇 Sunset: 19:32
+```
