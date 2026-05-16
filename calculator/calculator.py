@@ -1,93 +1,136 @@
 # Created by Joe Habre
 import math
 
-def add(x, y): return x + y
-def subtract(x, y): return x - y
-def multiply(x, y): return x * y
-def divide(x, y): return "❌ Cannot divide by zero." if y == 0 else x / y
-def power(x, y): return x ** y
-def modulus(x, y): return x % y
-def square_root(x): return math.sqrt(x)
-def factorial(x): return math.factorial(int(x)) if x >= 0 and float(x).is_integer() else "❌ Invalid input for factorial"
+
+def add(x, y):        return x + y
+def subtract(x, y):   return x - y
+def multiply(x, y):   return x * y
+def power(x, y):      return x ** y
+def modulus(x, y):    return x % y
+
+def divide(x, y):
+    if y == 0:
+        raise ZeroDivisionError("Cannot divide by zero.")
+    return x / y
+
+def square_root(x):
+    if x < 0:
+        raise ValueError("Cannot take square root of a negative number.")
+    return math.sqrt(x)
+
+def factorial(x):
+    if x < 0 or not float(x).is_integer():
+        raise ValueError("Factorial requires a non-negative integer.")
+    return math.factorial(int(x))
+
+def fmt(value):
+    if isinstance(value, float) and value.is_integer():
+        return str(int(value))
+    return str(value)
+
+BINARY_OPS = {
+    '+': add,
+    '-': subtract,
+    '*': multiply,
+    '/': divide,
+    '^': power,
+    '%': modulus,
+}
+
+UNARY_OPS = {
+    '√': square_root,
+    '!': factorial,
+}
+
 
 def display_menu():
-    print("\n📌 Available Operations:")
-    print(" +  : Addition")
-    print(" -  : Subtraction")
-    print(" *  : Multiplication")
-    print(" /  : Division")
-    print(" ^  : Power (x^y)")
-    print(" %  : Modulus")
-    print(" √  : Square Root")
-    print(" !  : Factorial")
-    print(" m+ : Save result to memory")
-    print(" mr : Recall memory")
-    print(" mc : Clear memory")
-    print(" h  : View history")
-    print(" q  : Quit")
+    print("\n📌 Operations:")
+    print("  Binary : + - * / ^ %")
+    print("  Unary  : √  !")
+    print("  Memory : m+  mr  mc")
+    print("  Other  : h (history)  cls (clear history)  q (quit)")
+    print("  Tip    : type 'ans' to reuse the last result as input")
 
-memory = 0
-history = []
-last_result = None
 
-while True:
+def get_number(prompt, ans):
+    raw = input(prompt).strip().lower()
+    if raw == 'ans':
+        if ans is None:
+            raise ValueError("No previous result to use.")
+        print(f"  (using ans = {fmt(ans)})")
+        return ans
+    return float(raw)
+
+
+def main():
+    memory = 0
+    history = []
+    ans = None
+
     display_menu()
-    op = input("\nEnter operation: ").strip()
 
-    if op == 'q':
-        print("👋 Exiting calculator. Bye!")
-        break
+    while True:
+        op = input("\nEnter operation: ").strip()
 
-    if op == 'm+':
-        if last_result is not None and isinstance(last_result, (int, float)):
-            memory = last_result
-            print("💾 Result saved to memory.")
+        if op == 'q':
+            print("👋 Goodbye!")
+            break
+
+        elif op == 'm+':
+            if ans is not None and isinstance(ans, (int, float)):
+                memory = ans
+                print(f"💾 Saved {fmt(ans)} to memory.")
+            else:
+                print("❌ No valid result to save.")
+
+        elif op == 'mr':
+            print(f"📥 Memory: {fmt(memory)}")
+
+        elif op == 'mc':
+            memory = 0
+            print("🧹 Memory cleared.")
+
+        elif op == 'h':
+            print("📜 History:")
+            if not history:
+                print("  (empty)")
+            else:
+                for i, entry in enumerate(history, 1):
+                    print(f"  {i}. {entry}")
+
+        elif op == 'cls':
+            history.clear()
+            print("🧹 History cleared.")
+
+        elif op in UNARY_OPS:
+            try:
+                num = get_number("Enter number: ", ans)
+                result = UNARY_OPS[op](num)
+                label = f"{op}{fmt(num)} = {fmt(result)}"
+                print(f"✅ {label}")
+                history.append(label)
+                ans = result
+            except (ValueError, OverflowError) as e:
+                print(f"❌ {e}")
+
+        elif op in BINARY_OPS:
+            try:
+                num1 = get_number("Enter first number: ", ans)
+                num2 = get_number("Enter second number: ", ans)
+                result = BINARY_OPS[op](num1, num2)
+                label = f"{fmt(num1)} {op} {fmt(num2)} = {fmt(result)}"
+                print(f"✅ {label}")
+                history.append(label)
+                ans = result
+            except (ValueError, ZeroDivisionError, OverflowError) as e:
+                print(f"❌ {e}")
+
+        elif op == 'menu' or op == '?':
+            display_menu()
+
         else:
-            print("❌ No valid result to save.")
-        continue
+            print("❌ Unknown operation. Type 'menu' to see available operations.")
 
-    if op == 'mr':
-        print(f"📥 Memory: {memory}")
-        continue
 
-    if op == 'mc':
-        memory = 0
-        print("🧹 Memory cleared.")
-        continue
-
-    if op == 'h':
-        print("📜 History:")
-        if not history:
-            print("  (No history yet)")
-        for i, r in enumerate(history, 1):
-            print(f"  {i}. {r}")
-        continue
-
-    if op in ('√', '!'):
-        try:
-            num = float(input("Enter number: "))
-            result = square_root(num) if op == '√' else factorial(num)
-        except ValueError:
-            result = "❌ Invalid number."
-
-    elif op in ('+', '-', '*', '/', '^', '%'):
-        try:
-            num1 = float(input("Enter first number: "))
-            num2 = float(input("Enter second number: "))
-            result = {
-                '+': add,
-                '-': subtract,
-                '*': multiply,
-                '/': divide,
-                '^': power,
-                '%': modulus
-            }[op](num1, num2)
-        except ValueError:
-            result = "❌ Invalid input. Please enter numbers."
-    else:
-        result = "❌ Invalid operation."
-
-    print(f"✅ Result: {result}")
-    last_result = result
-    if isinstance(result, (int, float)):
-        history.append(result)
+if __name__ == "__main__":
+    main()
