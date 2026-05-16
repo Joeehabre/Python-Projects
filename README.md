@@ -1,5 +1,7 @@
 # 🗂️ Python Projects
 
+![Lint](https://github.com/Joeehabre/Python-Projects/actions/workflows/lint.yml/badge.svg)
+
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Projects](https://img.shields.io/badge/Projects-7-orange)
