@@ -109,6 +109,7 @@ def main():
         count = 1
 
     passwords = []
+    entropy = 0
     for _ in range(count):
         pw, entropy = generate_password(length, use_upper, use_digits, use_symbols, excl_ambig)
         if pw is None:
@@ -118,11 +119,11 @@ def main():
 
     print()
     for i, pw in enumerate(passwords, 1):
-        _, entropy = generate_password(length, use_upper, use_digits, use_symbols, excl_ambig)
         label = f"  {i}. " if count > 1 else "  "
         print(f"{label}{pw}")
 
-    _, entropy = generate_password(length, use_upper, use_digits, use_symbols, excl_ambig)
+    # Entropy depends only on length and charset, so it is identical for every
+    # password generated with these settings.
     print(f"\n  🔐 Entropy   : ~{entropy:.1f} bits")
     print(f"  💪 Strength  : {strength_label(entropy)}")
 

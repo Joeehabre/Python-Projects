@@ -33,7 +33,13 @@ git clone https://github.com/Joeehabre/Python-Projects.git
 cd Python-Projects
 ```
 
-Install dependencies for the projects that need them:
+Install all dependencies at once:
+
+```bash
+pip install -r requirements.txt
+```
+
+Or install only what a given project needs:
 
 ```bash
 pip install pygame        # Snake Game

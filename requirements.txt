@@ -1,0 +1,7 @@
+# Third-party dependencies used by the projects in this repo.
+# The standard-library projects (calculator, todo-list, unit converter,
+# timer/stopwatch) need nothing extra.
+
+requests>=2.31      # weather-app — HTTP requests to the OpenWeatherMap API
+pygame>=2.5         # snake-game — graphics, input, and the game loop
+pyperclip>=1.8      # PasswordGen — optional, enables auto-copy to clipboard
